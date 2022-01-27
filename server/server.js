@@ -1,6 +1,9 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
+import Rect from "react";
+import ReactDomServer from "react-dom/server";
+import App from "../src/App";
 
 const app = express();
 
