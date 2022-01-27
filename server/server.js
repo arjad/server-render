@@ -14,7 +14,14 @@ app.use("^/$",(req,res,next)=>{
               console.log(err);
               return res.send(500).send("some error happned")
           }
-          return res.send(data.replace('<div id="root"></div>','<div id="root">${}</div>'))
+          return res.send(
+              data.replace('<div id="root"></div>',
+                            `<div id="root">${ReactDomServer.renderToString(<App/>)}</div>`))
       })
 
+})
+app.use(express.static(path.resolve(__dirname,"..", 'build')));
+
+app.listen(3000,()=>{
+    console.log("server is running");
 })
